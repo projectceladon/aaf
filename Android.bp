@@ -1,0 +1,20 @@
+cc_binary {
+
+    srcs: [
+	    "libkmod-ext.c",
+        "aafd.c",
+    ],
+
+    name: "aafd",
+    vendor: true,
+
+    include_dirs: [
+        "external/kmod",
+        "system/core/include",
+    ],
+
+    shared_libs: [
+        "libkmod",
+        "libcutils",
+    ],
+}
