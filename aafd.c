@@ -71,6 +71,14 @@ static struct aaf_modalias_ns nswl[] = {
 	{ "idi", 3 },
 };
 
+static const char *default_config_paths[] = {
+	"/vendor/etc/modprobe.d",
+	"/system/etc/modprobe.d",
+	"/run/modprobe.d",
+	"/lib/modprobe.d",
+	NULL
+};
+
 static struct kmod_ctx *g_kctx;
 /* aaf signal mask */
 static sigset_t aaf_mask;
@@ -105,7 +113,7 @@ static struct kmod_ctx *kmod_init(void)
 	if (asprintf(&p, "%s/%s", "vendor/lib/modules", u.release) < 0)
 		return NULL;
 
-	ctx = kmod_new(p, NULL);
+	ctx = kmod_new(p, default_config_paths);
 	if (p)
 		free(p);
 	if (!ctx)
