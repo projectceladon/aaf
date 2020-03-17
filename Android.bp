@@ -14,7 +14,7 @@ cc_binary {
     ],
 
     shared_libs: [
-        "libkmod",
+        "libkmod-shared",
         "libcutils",
     ],
 }
